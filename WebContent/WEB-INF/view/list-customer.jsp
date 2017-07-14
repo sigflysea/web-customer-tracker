@@ -36,15 +36,27 @@
     	   <th>Last Name</th>
     	   <th>Email</th>
     	   
+    	   <th>Action</th>
     	
     	</tr>
     	
     	<c:forEach var="tempC" items="${customers}" >
+   
+   <!--contruct updatelink variable and param to pass id to showform--> 	
+    	<c:url var="updateLink" value="/customer/showFormUpdate">
+    	     <c:param name="customerID" value="${tempC.id}"/>
+    	</c:url>
+
     	<tr>
     	
     	<td>${tempC.firstName}</td>
     	<td>${tempC.lastName}</td>
     	<td>${tempC.email}</td>
+    	
+    	<!-- add link in the table-->
+    	<td>
+    	<a href="${updateLink}">Update</a>  
+    	</td>
     	
     	</tr>
     	</c:forEach>
